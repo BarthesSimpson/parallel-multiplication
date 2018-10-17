@@ -123,9 +123,7 @@ def strip_leading_zeros(num):
 def subtract(x, y):
     """
     Subtracts a number y from another number x where
-    both numbers are represented as arrays. Assumes
-    the numbers have been pre-padding with leading 
-    zeros so as to be of equal length. x must be 
+    both numbers are represented as arrays. x must be 
     larger than y - no negative numbers here I'm
     afraid.
 
@@ -133,6 +131,7 @@ def subtract(x, y):
     :param y: []int
     :rtype []int
     """
+    x, y = match_padding(x, y)
     res = [0] * len(x)
     # go from left to right, subtracting
     # pairwise
@@ -149,7 +148,7 @@ def subtract(x, y):
         # current slot
         else:
             res[i] = sub
-    return res
+    return strip_leading_zeros(res)
 
 
 if __name__ == '__main__':
@@ -191,3 +190,4 @@ if __name__ == '__main__':
     assert subtract([5, 0], [3, 0]) == [2, 0]
     assert subtract([8, 4], [3, 5]) == [4, 9]
     assert subtract([2, 4, 5], [0, 6, 7]) == [1, 7, 8]
+    assert subtract([1, 1, 7], [5, 9]) == [5, 8]

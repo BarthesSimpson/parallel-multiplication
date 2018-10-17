@@ -6,6 +6,7 @@ O(n) space complexity.
 """
 
 from util import carry_left, match_padding, pad, pad_if_needed, strip_leading_zeros
+from big_numbers import big_number, big_number_as_array
 
 
 def multiply_simple(x, y):
@@ -66,21 +67,10 @@ if __name__ == '__main__':
 
     import time
     start = time.time()
-    multiply_simple([
-        6, 5, 4, 3, 2, 1, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5,
-        4, 3, 2, 1
-    ], [
-        6, 5, 4, 3, 2, 1, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5,
-        4, 3, 2, 1
-    ])
+    multiply_simple(big_number_as_array, big_number_as_array)
     end = time.time()
-    print((end - start) * 1000)
-    print(
-        len([
-            6, 5, 4, 3, 2, 1, 2, 4, 5, 6, 7, 8, 9, 2, 4, 5, 6, 7, 8, 9, 8, 7,
-            6, 5, 4, 3, 2, 1
-        ]))
+    print('naive', (end - start) * 1000, 'milliseconds')
     start = time.time()
-    6543212456789245678987654321245678987654321 * 6543212456789245678987654321245678987654321
+    big_number * big_number
     end = time.time()
-    print((end - start) * 1000)
+    print('native', (end - start) * 1000, 'milliseconds')
