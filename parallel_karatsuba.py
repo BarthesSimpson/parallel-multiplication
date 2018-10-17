@@ -7,7 +7,10 @@ parallelization using multiprocessing. The
 algorithm has O(n*log n) time complexity and 
 O(n) space complexity.
 
-Currently, it gets the wrong answer, but at least
+Runs about 3x faster than regular karatsuba for 
+multiplying two 1800 digit numbers.
+
+Alas, it currently gets the wrong answer, but at least
 it is a deterministically wrong answer...
 """
 
